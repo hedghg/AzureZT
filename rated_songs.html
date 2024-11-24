@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оценённые релизы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+select {
+    background-color: #292944;
+    color: #ffffff;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 360px;
+}
+
+select:hover {
+    background-color: #363660;
+}
+
+select:focus {
+    box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.5);
+}
+
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        h2 {
+            color: #ececec;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .songs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+         .controls {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             margin-bottom: 20px;
+           }
+
+          select#sortOptions, input#searchInput {
+             width: calc(50% - 10px);
+             max-width: 360px;
+          }
+
+
+
+        .song {
+            width: 100%;
+            background-color: #292944;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .song:hover {
+            transform: scale(1.02);
+        }
+
+        .song img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .score {
+            font-weight: bold;
+            color: #a29bfe;
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            width: 160px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -80px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .score:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .release-type {
+            font-style: italic;
+            color: #bdc3c7;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #74b9ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>Оценённые релизы</h2>
+
+<div class="controls">
+    <select id="sortOptions">
+        <option value="none">Без сортировки</option>
+        <option value="desc">По баллам (убывание)</option>
+        <option value="asc">По баллам (возрастание)</option>
+    </select>
+
+    <select id="filterType">
+        <option value="all">Все релизы</option>
+        <option value="album">Альбомы</option>
+        <option value="single">Синглы</option>
+    </select>
+
+    <input type="text" id="searchInput" placeholder="Искать релизы / исполнителей..." style="width: 100%; max-width: 360px; padding: 10px; border-radius: 5px; border: 1px solid #444; background-color: #292944; color: #ffffff; font-size: 16px; outline: none;">
+</div>
+
+
+
+
+
+    <div class="songs-container">
+
+        <div class="song">
+            <h3>Тени Хиросимы</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: GONE.Fludd</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F772d6337a0b92958e6b2e2a249a3674b.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 90 / 90
+                <span class="tooltip">10 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Хоть минуту</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Midix</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F8abbf7b265fe2e4d6eea98417c8af32a.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 70 / 90
+                <span class="tooltip">8 + 9 + 9 + 9 + 8</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>печаль (рассвет)</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: ssshhhiiittt!</em></p>
+            <img src="https://t2.genius.com/unsafe/440x440/https%3A%2F%2Fimages.genius.com%2F183b35c5b6bebe42649f079a37f31aec.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 83 / 90
+                <span class="tooltip">7 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>69</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: ssshhhiiittt!</em></p>
+            <img src="https://t2.genius.com/unsafe/440x440/https%3A%2F%2Fimages.genius.com%2F183b35c5b6bebe42649f079a37f31aec.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 74 / 90
+                <span class="tooltip">8 + 9 + 9 + 9 + 9</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>GLAZA</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: kayyo</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2Fcd78071b756454901d33461cfe126ce8.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 66 / 90
+                <span class="tooltip">7 + 9 + 9 + 8 + 8</span>
+            </span></p>
+        </div>
+
+
+        <div class="song">
+            <h3>ILM</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: kayyo</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2Fcd78071b756454901d33461cfe126ce8.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 54 / 90
+                <span class="tooltip">6 + 9 + 8 + 6 + 7</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>RN!</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: kayyo</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F8e11f60b432ecf00656abbcd8d375be3.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 64 / 90
+                <span class="tooltip">7 + 9 + 8 + 8 + 8</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>zombie</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: kayyo, Sqwore</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F3f545e71abc527899364a3bceec72c35.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 78 / 90
+                <span class="tooltip">8 + 10 + 10 + 9 + 9</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>АХАХАХ123KILL</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: OG Buda, MAYOT, Slatt Savage</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2Fd7866d14bbb983c6338a93beab7eded8.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 42 / 90
+                <span class="tooltip">5 + 8 + 5 + 6 + 6</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>spooky pooky blog</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: pixiesquad, kayyo, Sqwore</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F9a34e561ade8fd9d856a9118ded80dc7.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 64 / 90
+                <span class="tooltip">6 + 9 + 9 + 8 + 8</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Сваровски</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Heronwater</em></p>
+            <img src="https://t2.genius.com/unsafe/440x440/https%3A%2F%2Fimages.genius.com%2F340e2d61b9a441f5809f4b0fdf167668.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 87 / 90
+                <span class="tooltip">10 + 9 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Annabelle II</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: PROOVY, CAKEBOY</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F235487d597fa1089502034103ea89b50.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 90 / 90
+                <span class="tooltip">10 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>принцесса</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: treepside, Sqwore</em></p>
+            <img src="https://t2.genius.com/unsafe/440x440/https%3A%2F%2Fimages.genius.com%2Fdc53283fbc484c3f6cd02f2708517d3e.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 81 / 90
+                <span class="tooltip">9 + 10 + 8 + 9 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>дождь</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: treepside, 17 SEVENTEEN</em></p>
+            <img src="https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2Faf33e56f1d9c4ae5b6a849bcdf413bbf.465x465x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 72 / 90
+                <span class="tooltip">6 + 10 + 9 + 9 + 9</span>
+            </span></p>
+        </div>
+
+
+        <div class="song">
+            <h3>world</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: treepside</em></p>
+            <img src="https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2Fdc53283fbc484c3f6cd02f2708517d3e.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 64 / 90
+                <span class="tooltip">8 + 8 + 8 + 8 + 8</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Ещё Вчера</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Midix</em></p>
+            <img src="https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2Fdd7d1cba079aa01f4c0ba1a92acc8d30.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 90 / 90
+                <span class="tooltip">10 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>2DWRLD PREQUEL</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: Midix</em></p>
+            <img src="https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2Fdd7d1cba079aa01f4c0ba1a92acc8d30.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 90 / 90
+                <span class="tooltip">10 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Ты Не Любишь</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: 17 SEVENTEEN</em></p>
+            <img src="https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2F534aacf4ce5bcb1127f33580ff0815a2.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 85 / 90
+                <span class="tooltip">8 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Мы Смеялись Никто Не Понял</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: 17 SEVENTEEN</em></p>
+            <img src="https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2F534aacf4ce5bcb1127f33580ff0815a2.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 74 / 90
+                <span class="tooltip">8 + 9 + 9 + 9 + 9</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Как дела?</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: 17 SEVENTEEN</em></p>
+            <img src="https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2Ffdb2d29c4d7b428a952a9b81286b8339.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 83 / 90
+                <span class="tooltip">9 + 10 + 10 + 9 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Аквариум</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Sqwore</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F194f44e6003a495303af1ac830aa9c96.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 87 / 90
+                <span class="tooltip">9 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Eve</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: Sqwore</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F194f44e6003a495303af1ac830aa9c96.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 87 / 90
+                <span class="tooltip">9 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>НЛО</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Sqwore, 17 SEVENTEEN</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2Fb69791bf0bca32fdc49e97b852f4631e.605x605x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 85 / 90
+                <span class="tooltip">8 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>432hz</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: Sqwore</em></p>
+            <img src="https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2Fb69791bf0bca32fdc49e97b852f4631e.605x605x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 83 / 90
+                <span class="tooltip">9 + 9 + 9 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Танцы</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: ssshhhiiittt!</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2Facf930ceb6fa3fab05f44b3e22350983.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 81 / 90
+                <span class="tooltip">8 + 9 + 9 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Я вытащу тебя со дна</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: KSB muzic</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F44a375af5abce512e2578c57466f11f9.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 85 / 90
+                <span class="tooltip">10 + 10 + 9 + 9 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>мы</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: ssshhhiiittt!</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F967050119df8d3b2962ceeaa0f1f0c05.300x300x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 60 / 90
+                <span class="tooltip">9 + 9 + 7 + 7 + 7</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Касса свободы</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: Комсомольск</em></p>
+            <img src="https://t2.genius.com/unsafe/440x440/https%3A%2F%2Fimages.genius.com%2F4b1b712c78ce88c855ce7f7127f294f5.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 81 / 90
+                <span class="tooltip">8 + 9 + 9 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Соня</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Комсомольск</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F4b1b712c78ce88c855ce7f7127f294f5.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 87 / 90
+                <span class="tooltip">9 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>212-85-06</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Аквариум</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F40a79a48c2180b6e16d44e1936a4defd.900x900x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 74 / 90
+                <span class="tooltip">9 + 9 + 9 + 10 + 8</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Там где ты</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Буерак</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2Fdfebefad8d7c3dbaa3efe91898d3165f.300x300x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 52 / 90
+                <span class="tooltip">6 + 7 + 7 + 6 + 8</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>но ты</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: ssshhhiiittt!</em></p>
+            <img src="https://t2.genius.com/unsafe/440x440/https%3A%2F%2Fimages.genius.com%2Fc6ee2415668d4d16c531982294c0c22c.1000x1000x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 76 / 90
+                <span class="tooltip">7 + 9 + 9 + 9 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Cupid’s Chokehold / Breakfast in America</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Gym Class Heroes</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F4ed371801542653845f131b31a77b7ef.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 90 / 90
+                <span class="tooltip">10 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>шаг до воды</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: ssshhhiiittt!</em></p>
+            <img src="https://t2.genius.com/unsafe/440x440/https%3A%2F%2Fimages.genius.com%2F9af3e9d02567097f1f54f1d1d61527d4.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 61 / 90
+                <span class="tooltip">7 + 7 + 8 + 7 + 9</span>
+            </span></p>
+        </div>
+
+
+        <div class="song">
+            <h3>Стыцамен</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Иван Дорн</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F73b9b38f42c3c972fecbda4f4e034dc5.600x600x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 78 / 90
+                <span class="tooltip">8 + 9 + 10 + 10 + 9</span>
+            </span></p>
+        </div>
+        
+
+        <div class="song">
+            <h3>Верный спутник</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Комсомольск</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F39fa38e9dba3252075704d532f29e7af.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 87 / 90
+                <span class="tooltip">9 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Всё было так</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Электрофорез</em></p>
+            <img src="https://t2.genius.com/unsafe/440x440/https%3A%2F%2Fimages.genius.com%2F04b43f177798b3320c12e2f53acee342.500x500x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 76 / 90
+                <span class="tooltip">9 + 10 + 8 + 9 + 9</span>
+            </span></p>
+        </div>
+        
+        <div class="song">
+            <h3>Румтур</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Sqwore</em></p>
+            <img src="https://t2.genius.com/unsafe/275x275/https%3A%2F%2Fimages.genius.com%2Fcf22b5b5383d4c9b212e17ef90b81ccf.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 87 / 90
+                <span class="tooltip">9 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Обо всём и ни о чём</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: Sqwore</em></p>
+            <img src="https://t2.genius.com/unsafe/275x275/https%3A%2F%2Fimages.genius.com%2Fcf22b5b5383d4c9b212e17ef90b81ccf.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 85 / 90
+                <span class="tooltip">9 + 9 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+       <div class="song">
+            <h3>Paranoid</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Black Sabbath</em></p>
+            <img src="https://t2.genius.com/unsafe/275x275/https%3A%2F%2Fimages.genius.com%2F94f76a97372af010e915357367d22ee0.300x301x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 76 / 90
+                <span class="tooltip">7 + 10 + 10 + 9 + 9</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Люди-тени</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: dowzyy, r1shkAa</em></p>
+            <img src="https://t2.genius.com/unsafe/275x275/https%3A%2F%2Fimages.genius.com%2Fe9aac1377ee1348143fa20dd8e171b3e.1000x1000x1.jpg" alt="Источник фото: Соц.Сети r1shkAa" />
+            <p><span class="score">Баллы: 76 / 90
+                <span class="tooltip">7 + 10 + 9 + 8 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Не поменяло</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: MAYOT</em></p>
+            <img src="https://t2.genius.com/unsafe/275x275/https%3A%2F%2Fimages.genius.com%2F872f1f0e68c69aacc2436dcda365affc.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 78 / 90
+                <span class="tooltip">10 + 10 + 8 + 9 + 9</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Ночник</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: 17 SEVENTEEN, Sqwore</em></p>
+            <img src="https://t2.genius.com/unsafe/330x0/https%3A%2F%2Fimages.genius.com%2F68f3cb11c1556ba040a0b536bbc71703.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 83 / 90
+                <span class="tooltip">7 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Как я провела лето</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: 17 SEVENTEEN, Sqwore</em></p>
+            <img src="https://t2.genius.com/unsafe/425x425/https%3A%2F%2Fimages.genius.com%2Fe958ec8aafb5b51d4a2995a02bde786d.1000x1000x1.png" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 85 / 90
+                <span class="tooltip">8 + 10 + 10 + 10 + 10</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>ZONBI</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Blue-eyed shamans</em></p>
+            <img src="https://t2.genius.com/unsafe/275x275/https%3A%2F%2Fimages.genius.com%2Fd3d9575d646fe42cb51a4fdf8995180f.1000x1000x1.jpg" alt="Источник фото: Соц.Сети Pavel Shamanov" />
+            <p><span class="score">Баллы: 56 / 90
+                <span class="tooltip">7 + 9 + 7 + 7 + 7</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Electric Funeral</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: Black Sabbath</em></p>
+            <img src="https://t2.genius.com/unsafe/425x425/https%3A%2F%2Fimages.genius.com%2F059111671a0056034bf5c0e86e6ee716.905x905x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 70 / 90
+                <span class="tooltip">8 + 9 + 9 + 7 + 9</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>Розовые улицы</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: dowzyy, r1shkAa</em></p>
+            <img src="https://t2.genius.com/unsafe/275x275/https%3A%2F%2Fimages.genius.com%2Fe9aac1377ee1348143fa20dd8e171b3e.1000x1000x1.jpg" alt="Источник фото: Соц.Сети r1shkAa" />
+            <p><span class="score">Баллы: 62 / 90
+                <span class="tooltip">7 + 9 + 8 + 7 + 8</span>
+            </span></p>
+        </div>
+
+        <div class="song">
+            <h3>only true blue legit tracks</h3>
+            <p><span class="release-type">Альбом</span></p>
+            <p><em>Исполнители: r1shkAa</em></p>
+            <img src="https://t2.genius.com/unsafe/275x275/https%3A%2F%2Fimages.genius.com%2F00336128c617555eecbcf5e2c82aa474.1000x1000x1.png" alt="Источник фото: r1shkAa" />
+            <p><span class="score">Баллы: 60 / 90
+                <span class="tooltip">7 + 8 + 7 + 8 + 8</span>
+            </span></p>
+        </div>   
+
+        <div class="song">
+            <h3>Paint It, Black</h3>
+            <p><span class="release-type">Сингл</span></p>
+            <p><em>Исполнители: The Rolling Stones</em></p>
+            <img src="https://t2.genius.com/unsafe/275x275/https%3A%2F%2Fimages.genius.com%2F28d03f64b4595babf96a84bbefacb788.299x299x1.jpg" alt="https://via.placeholder.com/275" />
+            <p><span class="score">Баллы: 76 / 90
+                <span class="tooltip">8 + 9 + 10 + 9 + 9</span>
+            </span></p>
+        </div>
+    </div>
+
+    <a href="index.html">Назад к оценке релизов</a>
+
+<script src="sortReleases.js"></script>
+<script src="filterType.js"></script>
+
+</body>
+</html>

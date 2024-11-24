@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оценка треков</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Оценка релиза</h2>
+
+
+        <div class="track-info">
+            <label for="song">Название релиза:</label>
+            <input type="text" id="song" name="song" placeholder="Введите название трека">
+
+            <label for="artist">Исполнители:</label>
+            <input type="text" id="artist" name="artist" placeholder="Введите имя исполнителя">
+        </div>
+
+        <div class="slider-group">
+            <label for="rhymes">Рифмы и образы:</label>
+            <input type="range" class="slider slider-blue" id="rhymes" name="rhymes" min="1" max="10" value="5" oninput="updateValue(this, 'rhymesValue')">
+            <span id="rhymesValue">5</span>
+        </div>
+
+        <div class="slider-group">
+            <label for="structure">Структура/Ритмика:</label>
+            <input type="range" class="slider slider-blue" id="structure" name="structure" min="1" max="10" value="5" oninput="updateValue(this, 'structureValue')">
+            <span id="structureValue">5</span>
+        </div>
+
+        <div class="slider-group">
+            <label for="style">Реализация стиля:</label>
+            <input type="range" class="slider slider-blue" id="style" name="style" min="1" max="10" value="5" oninput="updateValue(this, 'styleValue')">
+            <span id="styleValue">5</span>
+        </div>
+
+        <div class="slider-group">
+            <label for="charisma">Индивидуальность/Харизма:</label>
+            <input type="range" class="slider slider-blue" id="charisma" name="charisma" min="1" max="10" value="5" oninput="updateValue(this, 'charismaValue')">
+            <span id="charismaValue">5</span>
+        </div>
+
+        <div class="slider-group">
+            <label for="atmosphere"><strong>Атмосфера/Вайб:</strong></label>
+            <input type="range" class="slider slider-purple" id="atmosphere" name="atmosphere" min="1" max="10" value="5" oninput="updateValue(this, 'atmosphereValue')">
+            <span id="atmosphereValue">5</span>
+        </div>
+
+
+        <div class="button-container">
+            <button type="calculate" onclick="calculateScore()">Посчитать итоговую оценку</button>
+            <button type="ratedsongs" onclick="location.href='rated_songs.html'">Оценённые релизы</button>
+            <button type="submit" onclick="submitSongInfo()">Подтвердить</button>
+        </div>
+        
+        <p id="totalScore">Текущая итоговая оценка: 0</p>
+    </div>
+
+    <script src="rated_songs.js"></script>
+    <script>
+        function submitSongInfo() {
+            const artist = document.getElementById('artist').value;
+            const song = document.getElementById('song').value;
+            alert(`Вы ввели:\nИсполнитель: ${artist}\nНазвание трека: ${song}`);
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>
