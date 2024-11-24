@@ -1,128 +1,155 @@
 body {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #191d1f 0%, #1e1e3e 100%);
-  color: #ffffff;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+ font-family: 'Roboto', sans-serif;
+ background: linear-gradient(135deg, #191d1f 0%, #1e1e3e 100%);
+ color: #ffffff;
+ margin: 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
 }
 
-
 .container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 30px;
-  box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
-  background-color: #333542;
-  border-radius: 10px;
+ max-width: 95%;
+ margin: 20px auto;
+ padding: 20px;
+ box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+ background-color: #333542;
+ border-radius: 10px;
 }
 
 .track-info, .slider-group {
-  margin-bottom: 20px;
+ margin-bottom: 15px;
 }
 
 .track-info input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  box-sizing: border-box;
-  border: 1px solid #555;
-  border-radius: 5px;
-  background-color: #44475a;
-  color: #fff;
+ width: 100%;
+ padding: 8px;
+ font-size: 14px;
+ box-sizing: border-box;
+ border: 1px solid #555;
+ border-radius: 5px;
+ background-color: #44475a;
+ color: #fff;
 }
 
 .button-container {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s;
-
+ padding: 8px 15px; 
+ font-size: 14px; 
+ color: white;
+ border: none;
+ cursor: pointer;
+ border-radius: 5px;
+ transition: background-color 0.3s, transform 0.2s;
+ width: 100%; 
+ box-sizing: border-box;
 }
 
 button:hover {
-  transform: scale(1.05);
+ transform: scale(1.05);
 }
 
 button[type="submit"] {
-  background-color: #28a745;
+ background-color: #28a745;
 }
 
 button[type="submit"]:hover {
-  background-color: #218838;
+ background-color: #218838;
 }
 
 button[type="calculate"] {
-  background-color: #0089d9;
+ background-color: #0089d9;
 }
 
 button[type="calculate"]:hover {
-  background-color: #0d7fc2;
+ background-color: #0d7fc2;
 }
 
 button[type="ratedsongs"] {
-  background-color: #8c7ae6;
+ background-color: #8c7ae6;
 }
 
 button[type="ratedsongs"]:hover {
-  background-color: #7158e2;
+ background-color: #7158e2;
 }
 
 .slider-group {
-  display: flex;
-  align-items: center;
+ display: flex;
+ align-items: center;
+ flex-direction: column;
 }
 
 label {
-  flex: 1;
-  font-weight: bold;
+ font-weight: bold;
+ margin-bottom: 5px;
 }
 
 input[type="range"].slider-blue {
-  background: linear-gradient(90deg, #4a90e2, #3498db);
+ background: linear-gradient(90deg, #4a90e2, #3498db);
 }
 
 input[type="range"].slider-purple {
  background: linear-gradient(90deg, #8a2be2, #9932cc);
 }
 
-
 input[type="range"] {
-  flex: 2;
-  margin-left: 10px;
-  cursor: pointer;
-  height: 10px;
-  border-radius: 5px;
-  transition: background 0.3s;
+ width: 100%;
+ margin-left: 0;
+ cursor: pointer;
+ height: 10px;
+ border-radius: 5px;
+ transition: background 0.3s;
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  background: #fff;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 2px solid #ddd;
-  transition: background-color 0.3s;
+ background: #fff;
+ width: 15px;
+ height: 15px;
+ border-radius: 50%;
+ cursor: pointer;
+ border: 2px solid #ddd;
+ transition: background-color 0.3s;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  background: #eee;
+ background: #eee;
 }
 
 #totalScore {
-  margin-top: 25px;
-  font-size: 1.2em;
-  color: #f1c40f;
+ margin-top: 25px;
+ font-size: 1em;
+ color: #f1c40f;
+ text-align: center;
+}
+
+@media (max-width: 768px) {
+ .container {
+  padding: 15px;
+ }
+ .button-container {
+  flex-direction: column;
+ }
+ button {
+  width: 100%;
+ }
+}
+
+@media (max-width: 500px) {
+ .track-info input[type="text"] {
+  font-size: 12px;
+ }
+ button {
+  font-size: 12px;
+  padding: 6px 10px;
+ }
+ label {
+  font-size: 14px;
+ }
+
 }
